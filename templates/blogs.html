@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Build-A-Blog!</h1>
+
+<form action='/newpost'>
+    <input type='submit' value='Create a New Post!' />
+</form>
+
+{% if posts|length == 0 %}
+    
+    <p>Your First Post is waiting to be created!</p>
+
+{% else %}
+
+    {% for post in posts %}
+        <a href="/blog?id={{post.id}}"><h2>{{post.title}}</h2></a>
+        <br>
+        <p>{{post.body}}</p>
+        
+        <hr />
+    {% endfor %}
+
+
+{% endif %}
+
+{% endblock %}
